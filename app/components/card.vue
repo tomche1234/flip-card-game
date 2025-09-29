@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="perspective-1000 cursor-pointer w-28 h-40" @click="isFlipped = !isFlipped">
+    <div class="perspective-1000 cursor-pointer w-28 h-40" @click="updateIsFlipped">
       <div
         :class="[
           'relative w-full h-full transition-transform duration-500 transform-style-3d',
-          isFlipped ? 'rotate-y-180' : ''
+          currnetIsFlipped ? 'rotate-y-180' : ''
         ]"
       >
         <div class="absolute w-full h-full backface-hidden">
@@ -26,15 +26,27 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed } from 'vue';
 import CardFront from './CardFront.vue'; 
 import CardBack from './CardBack.vue';
+const emit = defineEmits<{
+  (e: 'update-isFlipped', index:number, isFlipped:boolean): void
+}>()
 const props = defineProps<{
+  index: number
   suit: "hearts" | "spades" | "clubs" | "diamonds";
   rank: string;
+  isFlipped: boolean
 }>();
 
-const isFlipped = ref(false);
+function updateIsFlipped()
+{
+  emit('update-isFlipped', props.index, !currnetIsFlipped.value)
+}
+
+const currnetIsFlipped = computed(() => {
+  return props.isFlipped
+});
 </script>
 
 <style>
