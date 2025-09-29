@@ -81,8 +81,8 @@ flipgame/
 ```
 
 ## 📸 Screenshots  
-![Game Screenshot](./public/screenshot/gameboard.png))
-![Winner Screenshot](./public/screenshot/winner.gif))
+![Game Screenshot](./public/screenshot/gameboard.png)
+![Winner Screenshot](./public/screenshot/winner.gif)
 
 ## ✨ Future Improvements  
 - Add timer and move counter.  
